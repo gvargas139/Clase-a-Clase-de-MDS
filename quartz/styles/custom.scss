@@ -1,0 +1,37 @@
+@use "./variables.scss" as *;
+
+/* Portafolio académico: violeta oscuro, tarjetas y mejoras de lectura.
+   Este archivo es un complemento para quartz/styles/custom.scss de Quartz v5. */
+body { --secondary: #a97aff; --tertiary: #cba4ff; }
+:root[saved-theme="dark"] body { --dark: #101322; --light: #111527; }
+article h1 { letter-spacing: -0.035em; }
+article h2 { margin-top: 1.75em; }
+article img { max-width: 100%; height:auto; border-radius: 12px; }
+article blockquote { border-radius: 10px; }
+article pre { border-radius: 10px; }
+/* En la portada, las dos filas de tarjetas se vuelven cuadrícula responsive. */
+article:has(#portal-inicio) table:first-of-type {display:block; width:100%; margin: 18px 0 30px; border:0;}
+article:has(#portal-inicio) table:first-of-type thead {display:none;}
+article:has(#portal-inicio) table:first-of-type tbody {display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); gap:12px;}
+article:has(#portal-inicio) table:first-of-type tr {display:contents;}
+article:has(#portal-inicio) table:first-of-type td {display:block; box-sizing:border-box; padding:16px 12px; min-height:150px; border:1px solid #5c487c; border-radius:14px; background:linear-gradient(150deg,#33244c,#1d2236); color:#f5efff; box-shadow:0 8px 20px #0002; transition:transform .15s,border-color .15s;}
+article:has(#portal-inicio) table:first-of-type td:hover {transform:translateY(-3px);border-color:#bc93ff;}
+article:has(#portal-inicio) table:first-of-type td a {color:#fff; font-weight:700;}
+article:has(#portal-inicio) table:first-of-type td small {display:block; margin-top:10px; font-size:.8em; color:#d0c6de;}
+@media(max-width:1250px) {article:has(#portal-inicio) table:first-of-type tbody{grid-template-columns:repeat(3,minmax(0,1fr));}}
+@media(max-width:800px) {article:has(#portal-inicio) table:first-of-type tbody{grid-template-columns:repeat(2,minmax(0,1fr));}}
+@media(max-width:500px) {article:has(#portal-inicio) table:first-of-type tbody{grid-template-columns:1fr;}}
+
+
+/* Tarjetas completamente clicables */
+article:has(#portal-inicio) table:first-of-type td {
+  position: relative;
+  cursor: pointer;
+}
+
+article:has(#portal-inicio) table:first-of-type td a::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+}
